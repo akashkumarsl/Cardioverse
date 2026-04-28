@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rPPG Digital Twin (Browser)</title>
+  <link rel="stylesheet" href="./src/styles.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="scene"></div>
+
+  <aside id="hud">
+    <h1>rPPG Digital Twin</h1>
+    <p class="muted">Webcam &rarr; in-browser BPM &rarr; live 3D heart.</p>
+    <button id="startBtn">Start Camera</button>
+    <p id="status" class="status">Idle</p>
+
+    <div class="metric">
+      <span>Heart Rate</span>
+      <strong id="bpm">--</strong><small>BPM</small>
+    </div>
+    <div class="metric small">
+      <span>Confidence</span>
+      <strong id="conf">--</strong>
+    </div>
+    <div class="metric small">
+      <span>Zone</span>
+      <strong id="zone">--</strong>
+    </div>
+
+    <div class="preview">
+      <video id="video" playsinline muted></video>
+      <canvas id="overlay"></canvas>
+    </div>
+
+    <div class="ecg">
+      <canvas id="ecg" width="560" height="80"></canvas>
+    </div>
+
+    <p class="muted tiny">
+      Drag to orbit &middot; scroll to zoom.
+      Best results: bright, even light, steady head.
+    </p>
+  </aside>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
